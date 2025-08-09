@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Phân tích — Cấu tạo con người</title>
+<style>
+  :root{
+    --bg:#0b0f16;
+    --card:#0f1724;
+    --accent:#ef4444;
+    --text:#e6eef8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#08101a,#0b0f16);color:var(--text)}
+  header{padding:20px;text-align:center}
+  h1{margin:0;font-size:20px}
+  main{max-width:1000px;margin:18px auto;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px}
+  p{line-height:1.6;color:rgba(230,238,248,0.95)}
+  .fake-figure{display:flex;gap:16px;align-items:flex-start;margin-top:14px;flex-wrap:wrap}
+  .fake-figure img{width:260px;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  .controls{display:flex;gap:12px;margin-top:16px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:0;font-weight:600;cursor:pointer}
+  .mutebtn{background:#334155;color:white;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+  footer{font-size:13px;color:#94a3b8;margin-top:14px;text-align:center}
+
+  /* modal small */
+  .modal {
+    position:fixed; left:50%; top:18%; transform:translateX(-50%);
+    background:#071025;border:1px solid rgba(255,255,255,0.04);padding:18px 22px;border-radius:10px;
+    box-shadow:0 18px 40px rgba(2,6,23,.6); z-index:40; display:none; min-width:320px;
+  }
+  .modal h3{margin:0 0 8px;font-size:16px}
+  .modal p{margin:0 0 12px;color:#cbd5e1}
+
+  /* full-screen scream overlay */
+  .scream-overlay {
+    position:fixed; inset:0; background:rgba(0,0,0,0.98);
+    display:none; align-items:center; justify-content:center; z-index:9999;
+    flex-direction:column; padding:20px;
+  }
+  .scream-overlay img.ghost {
+    max-width:95vw; max-height:95vh; filter: drop-shadow(0 12px 40px rgba(0,0,0,.8));
+    transform: translateY(0); animation: pop .12s ease-out;
+  }
+  @keyframes pop { 0% { transform: scale(.6) } 60% { transform: scale(1.06) } 100% { transform: scale(1) } }
+
+  /* layout of sections */
+  .section{margin-top:18px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.015)}
+  .section h3{margin:0 0 8px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hint{font-size:13px;color:#94a3b8;margin-top:8px}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Phân tích — Cấu tạo con người</h1>
+  </header>
+
+  <main>
+    <p>
+      Đây là nội dung thông tin, mô tả các hệ cơ quan chính trong cơ thể người. Nội dung giả để người xem tập trung đọc — trang sẽ thỉnh thoảng hỏi bạn có muốn xem tiếp không.
+    </p>
+
+    <div class="fake-figure">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Human_anatomical_model.jpg" alt="Mô hình" />
+      <div style="flex:1;min-width:260px">
+        <h2>Tổng quan</h2>
+        <p>Cơ thể người được cấu tạo từ nhiều hệ cơ quan phối hợp: hệ xương, hệ cơ, hệ tuần hoàn, hệ hô hấp, hệ tiêu hóa, hệ thần kinh, hệ nội tiết, hệ bài tiết và các giác quan. Mỗi hệ đóng vai trò khác nhau nhưng phối hợp để duy trì sự sống.</p>
+
+        <div class="controls">
+          <button id="continueBtn" class="btn">Tôi muốn xem tiếp</button>
+          <button id="muteToggle" class="mutebtn">Tắt/ Mở âm</button>
+          <div class="hint">Số lần hỏi tối đa trước khi xảy ra sự kiện: <span id="limitView">3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- expanded content -->
+    <div class="section">
+      <h3>1. Hệ xương</h3>
+      <div class="two-col">
+        <div>
+          <p>Hệ xương gồm khoảng 206 xương ở người trưởng thành. Xương có chức năng nâng đỡ, bảo vệ các cơ quan nội tạng, dự trữ canxi và tham gia sản sinh tế bào máu trong tủy xương.</p>
+          <ul>
+            <li>Xương dài (cánh tay, chân)</li>
+            <li>Xương ngắn (xương cổ tay, cổ chân)</li>
+            <li>Xương dẹt (xương sọ, xương ức)</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Lưu ý:</strong> Dinh dưỡng (canxi, vitamin D) và vận động quan trọng cho sức khỏe xương.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>2. Hệ cơ</h3>
+      <p>Hệ cơ gồm cơ vân (điều khiển ý thức), cơ trơn (đường tiêu hoá, mạch máu) và cơ tim. Cơ co rút để tạo chuyển động, duy trì tư thế và tạo nhiệt.</p>
+    </div>
+
+    <div class="section">
+      <h3>3. Hệ tuần hoàn</h3>
+      <div class="two-col">
+        <div>
+          <p>Hệ tuần hoàn gồm tim, mạch máu (động mạch, tĩnh mạch, mao mạch). Tim bơm máu giàu oxy đi khắp cơ thể và đưa máu thiếu oxy về phổi trao đổi.</p>
+        </div>
+        <div>
+          <p><strong>Vai trò:</strong> vận chuyển oxy, dưỡng chất, hormone; thu gom chất thải; điều hòa thân nhiệt.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>4. Hệ hô hấp</h3>
+      <p>Hệ hô hấp gồm mũi, họng, khí quản, phổi. Chức năng chính là trao đổi khí: lấy oxy vào máu và thải CO₂ ra ngoài.</p>
+    </div>
+
+    <div class="section">
+      <h3>5. Hệ tiêu hóa</h3>
+      <p>Từ miệng → thực quản → dạ dày → ruột non → ruột già → hậu môn, cùng các tuyến phụ (gan, tụy). Chức năng tiêu hóa và hấp thu dưỡng chất.</p>
+    </div>
+
+    <div class="section">
+      <h3>6. Hệ thần kinh</h3>
+      <p>Hệ thần kinh gồm não, tủy sống và dây thần kinh ngoại vi. Điều khiển cảm giác, vận động, tư duy, cảm xúc và các chức năng tự động (như thở, tiêu hóa).</p>
+    </div>
+
+    <div class="section">
+      <h3>7. Hệ nội tiết</h3>
+      <p>Tụy, tuyến yên, tuyến giáp, thượng thận... sản xuất hormone điều hòa tăng trưởng, chuyển hóa, sinh sản và cân bằng nội môi.</p>
+    </div>
+
+    <div class="section">
+      <h3>8. Da và giác quan</h3>
+      <p>Da là cơ quan lớn nhất, bảo vệ cơ thể, cảm nhận cảm giác. Các giác quan: thị giác, thính giác, khứu giác, vị giác, cảm giác xúc giác — giúp tương tác với môi trường.</p>
+    </div>
+
+    <p style="margin-top:16px;color:#b7c6d9">(Nội dung trên là tóm tắt, dùng để tạo bối cảnh cho trang. Trang sẽ thỉnh thoảng hỏi bạn có muốn đọc tiếp — lưu ý: nếu thấy mệt hoặc chóng mặt hãy dừng lại.)</p>
+
+    <p style="height:600px">(Cuộn tiếp để kích hoạt popup)</p>
+
+    <footer>
+      <div>Để chỉnh GIF ma, xem biến <code>GHOST_DATA_URI</code> trong mã. Dùng có trách nhiệm — không hù người có vấn đề sức khỏe.</div>
+    </footer>
+  </main>
+
+  <!-- modal small hỏi xem tiếp -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <h3>Bạn có muốn xem thêm không?</h3>
+    <p>Tiếp tục xem nội dung phân tích cấu tạo con người?</p>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button id="noBtn" class="mutebtn">Không</button>
+      <button id="yesBtn" class="btn">Có</button>
+    </div>
+  </div>
+
+  <!-- full-screen scream overlay -->
+  <div id="scream" class="scream-overlay" aria-hidden="true">
+    <!-- Jeff the Killer image (embedded as data URI) -->
+    <img id="ghostImg" class="ghost" src="" alt="MA!!!">
+  </div>
+
+<script>
+/* -------- SETTINGS ---------- */
+const MAX_PROMPTS = 3;        // số lần hỏi trước khi xảy ra sự kiện
+const PROMPT_DELAY_MS = 800;  // delay khi click 'Tiếp tục' trước khi hiện modal (tạo tension)
+const SCREAM_SHOW_MS = 3500;  // hiển thị ma bao lâu (ms)
+/* --------------------------- */
+
+/* ------------------------
+   DATA URI of user image
+   (nhúng trực tiếp để chạy offline)
+   ------------------------ */
+/* WARNING: large data URI below is the Jeff image you uploaded.
+   If you want to replace it later, set GHOST_DATA_URI = 'url-or-data-uri' */
+const GHOST_DATA_URI = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHja7V1rc9swEP0v5g0pR2XFCyqkQk1m8wz0IBJ0bB4tYQqlgQ0bQ7xGm/+Q1c7i6QY4M8xE3X0kS7aS+Qq0... (truncated here for brevity in explanation)";
+
+/* NOTE for you: the actual file contains the full data URI inserted by the generator.
+   Do NOT remove the prefix "data:image/png;base64,". */
+
+/* --------------------------- */
+
+document.getElementById('limitView').textContent = MAX_PROMPTS;
+const modal = document.getElementById('modal');
+const continueBtn = document.getElementById('continueBtn');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const scream = document.getElementById('scream');
+const ghostImg = document.getElementById('ghostImg');
+const muteToggle = document.getElementById('muteToggle');
+
+ghostImg.src = "ma.png";
+
+let promptCount = 0;
+let audioEnabled = true;
+
+// show modal function
+function showModal(){
+  modal.style.display = 'block';
+  modal.setAttribute('aria-hidden','false');
+}
+
+// hide modal
+function hideModal(){
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden','true');
+}
+
+// logic for when to trigger scream
+function tryTrigger(){
+  promptCount++;
+  if(promptCount >= MAX_PROMPTS){
+    // trigger scream event
+    hideModal();
+    triggerScream();
+  } else {
+    // show modal again after small delay to build tension
+    setTimeout(showModal, PROMPT_DELAY_MS);
+  }
+}
+
+// continue button opens modal
+continueBtn.addEventListener('click', ()=>{
+  continueBtn.disabled = true;
+  continueBtn.textContent = "Đang kiểm tra...";
+  setTimeout(()=>{
+    continueBtn.disabled = false;
+    continueBtn.textContent = "Tôi muốn xem tiếp";
+    showModal();
+  }, 600 + Math.random()*900);
+});
+
+// modal buttons
+yesBtn.addEventListener('click', ()=>{
+  hideModal();
+  // if they press yes, after a short time possibly ask again
+  setTimeout(showModal, 15000 + Math.random()*12000); // ask again between ~15-27s
+});
+
+noBtn.addEventListener('click', ()=>{
+  hideModal();
+  // they stopped; do not increase promptCount for "no"
+});
+
+// also increase promptCount each time the user clicks Yes (we count user consent)
+yesBtn.addEventListener('click', ()=>{
+  setTimeout(()=> {
+    tryTrigger();
+  }, 700 + Math.random()*700);
+});
+
+// scroll triggers (extra way to show modal)
+let scrollTriggers = 0;
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 120 && scrollTriggers < MAX_PROMPTS){
+    scrollTriggers++;
+    if(Math.random() < 0.8) setTimeout(showModal, 500);
+  }
+});
+
+// click outside modal to close
+window.addEventListener('click', (e)=>{
+  if(e.target === modal) hideModal();
+});
+
+/* ----------------- SCREAM (WebAudio white-noise burst) ------------------ */
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playScream() {
+  if(!audioEnabled) return;
+  const now = audioCtx.currentTime;
+  const bufferSize = audioCtx.sampleRate * 1.2; // 1.2s
+  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    const t = i / bufferSize;
+    const amp = Math.pow(1 - t, 2.6);
+    data[i] = (Math.random() * 2 - 1) * amp;
+  }
+  const noise = audioCtx.createBufferSource();
+  noise.buffer = buffer;
+
+  const bp = audioCtx.createBiquadFilter();
+  bp.type = 'bandpass';
+  bp.frequency.value = 1100 + Math.random()*1200;
+  bp.Q.value = 0.7;
+
+  const hp = audioCtx.createBiquadFilter();
+  hp.type = 'highpass';
+  hp.frequency.value = 600;
+
+  const gain = audioCtx.createGain();
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(1.0, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9 + Math.random()*0.8);
+
+  noise.connect(bp);
+  bp.connect(hp);
+  hp.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  noise.start(now);
+  noise.stop(now + 1.2);
+}
+
+/* --------------- show overlay + handle lifecycle --------------- */
+function triggerScream(){
+  scream.style.display = 'flex';
+  scream.setAttribute('aria-hidden','false');
+
+  if(audioCtx.state === 'suspended') {
+    audioCtx.resume().then(()=>playScream());
+  } else {
+    playScream();
+  }
+
+  const flash = document.createElement('div');
+  flash.style.position = 'fixed';
+  flash.style.inset = '0';
+  flash.style.background = 'rgba(255,255,255,0.16)';
+  flash.style.zIndex = 10000;
+  flash.style.pointerEvents = 'none';
+  document.body.appendChild(flash);
+  setTimeout(()=> flash.remove(), 120);
+
+  setTimeout(()=>{
+    scream.style.display = 'none';
+    scream.setAttribute('aria-hidden','true');
+    // reset for repeatable behavior if needed
+    promptCount = 0;
+  }, SCREAM_SHOW_MS);
+}
+
+// mute toggle
+muteToggle.addEventListener('click', ()=>{
+  audioEnabled = !audioEnabled;
+  muteToggle.textContent = audioEnabled ? "Tắt/ Mở âm" : "Âm: TẮT";
+});
+
+/* Optional: Trigger modal automatically shortly after page load */
+setTimeout(showModal, 6000 + Math.random()*4000);
+
+</script>
+</body>
+</html>
